@@ -1,0 +1,6 @@
+.App{
+    background-image: url(./assets/bg2.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 320px;
+}
