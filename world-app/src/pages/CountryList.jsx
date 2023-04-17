@@ -1,4 +1,5 @@
 import { useFetch } from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 import {
   Box,
   Card,
@@ -8,25 +9,23 @@ import {
   Text,
   SimpleGrid,
   Image,
+  Heading,
+  VStack,
 } from "@chakra-ui/react";
 
 export default function CountryList() {
-  // fetch("https://restcountries.com/v3.1/all")
-  //   .then((res) => res.json())
-  //   .then((data) => initialize(data))
-  //   .catch((err) => console.log("Error: ", err));
-
-  // let countries;
-  // const initialize = (countriesData) => {
-  //   countries = countriesData;
-  //   console.log(countries[0].name);
-  // };
-
   const { data, isPending, error } = useFetch(
     "https://restcountries.com/v3.1/all"
   );
 
-  console.log(data);
+  const imageStyles = {
+    border: "1px solid white",
+    htmlHeight: "300px",
+    htmlWidth: "200px",
+    ":hover": {
+      cursor: "pointer",
+    },
+  };
 
   return (
     <Box w="100%" mt="16px">
@@ -34,12 +33,30 @@ export default function CountryList() {
       <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">
         {data &&
           data.map((country) => (
-            <Card key={country.name.common}>
-              <CardHeader>{country.name.common}</CardHeader>
+            <Card
+              key={country.name.common}
+              align="center"
+              bg="transparent"
+              border="1px solid white"
+              color="white"
+            >
+              <CardHeader>
+                <Heading size="lg" _hover={{ cursor: "pointer" }}>
+                  {country.name.common}
+                </Heading>
+              </CardHeader>
               <CardBody>
-                <Image src={country.flags.png} />
+                <Link to={`/countries/${country.name.common}`}>
+                  <Image src={country.flags.png} sx={imageStyles} />
+                </Link>
               </CardBody>
-              <CardFooter></CardFooter>
+              <CardFooter>
+                <VStack>
+                  <Text>Region: {country.region}</Text>
+                  <Text>Capital: {country.capital}</Text>
+                  <Text>Population: {country.population}</Text>
+                </VStack>
+              </CardFooter>
             </Card>
           ))}
       </SimpleGrid>
