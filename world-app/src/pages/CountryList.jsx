@@ -13,7 +13,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-export default function CountryList() {
+//components
+import Searchbar from "../components/Searchbar";
+
+export default function CountryList({ countries }) {
   const { data, isPending, error } = useFetch(
     "https://restcountries.com/v3.1/all"
   );
@@ -30,6 +33,7 @@ export default function CountryList() {
   return (
     <Box w="100%" mt="16px">
       {isPending && <p>Loading...</p>}
+      <Searchbar />
       <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">
         {data &&
           data.map((country) => (
@@ -37,11 +41,15 @@ export default function CountryList() {
               key={country.name.common}
               align="center"
               bg="transparent"
-              border="1px solid white"
+              border="1px solid #333333"
               color="white"
             >
               <CardHeader>
-                <Heading size="lg" _hover={{ cursor: "pointer" }}>
+                <Heading
+                  size="lg"
+                  _hover={{ cursor: "pointer" }}
+                  color="#333333"
+                >
                   {country.name.common}
                 </Heading>
               </CardHeader>
@@ -51,7 +59,7 @@ export default function CountryList() {
                 </Link>
               </CardBody>
               <CardFooter>
-                <VStack>
+                <VStack color="#333333">
                   <Text>Region: {country.region}</Text>
                   <Text>Capital: {country.capital}</Text>
                   <Text>Population: {country.population}</Text>
