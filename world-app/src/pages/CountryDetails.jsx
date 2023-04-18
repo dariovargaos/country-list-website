@@ -18,7 +18,6 @@ export default function CountryDetails() {
   const url = `https://restcountries.com/v3.1/name/${name}`;
   const { data, isPending, error } = useFetch(url);
 
-  console.log(data);
   return (
     <Box p="16px">
       {isPending && <Text>Loading</Text>}
