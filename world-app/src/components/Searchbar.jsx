@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Searchbar() {
-  const [search, setSearch] = useState("");
+  const [term, setTerm] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    navigate(`/search?name=${search}`);
+    navigate(`/search?countryName=${term}`);
   };
   return (
     <div>
@@ -17,7 +17,7 @@ export default function Searchbar() {
         <input
           type="text"
           id="search"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setTerm(e.target.value)}
           required
         />
       </form>

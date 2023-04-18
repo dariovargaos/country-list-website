@@ -8,9 +8,9 @@ import CountryList from "./CountryList";
 export default function Search() {
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
-  const query = queryParams.get("name");
+  const query = queryParams.get("countryName");
 
-  const url = "https://restcountries.com/v3.1/name/" + query;
+  const url = `https://restcountries.com/v3.1/name/${query}`;
 
   const { data, isPending, error } = useFetch(url);
 
@@ -19,7 +19,7 @@ export default function Search() {
       <Heading>Your search for: {query}</Heading>
       {error && <Text>{error}</Text>}
       {isPending && <Text>Loading...</Text>}
-      {data && <CountryList countries={data} />}
+      {data && <CountryList countryName={data} />}
     </Box>
   );
 }
