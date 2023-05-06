@@ -1,8 +1,7 @@
 .App{
-    /* background-image: url(./assets/bg2.jpg);
+    background-image: url(./assets/bg.jpg);
     background-size: cover;
-    min-height: 100vh;
-    min-width: 320px; */
-    background-color: #F1F1F1;
-    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }

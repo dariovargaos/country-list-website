@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <Center mt="50px">
-      <Box>
-        <Text color="#333333" mb="10px">
+      <Box color="white">
+        <Text mb="10px">
           A country is a distinct part of the world, such as a state, nation, or
           other political entity. It may be a sovereign state or make up one
           part of a larger state.For example, the country of Japan is an

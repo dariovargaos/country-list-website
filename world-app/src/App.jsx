@@ -15,7 +15,7 @@ function App() {
   return (
     <Box className="App" align="center">
       <BrowserRouter>
-        <Box maxW="860px" bg="white" h="100%" p="10px">
+        <Box maxW="860px" bg="rgba(0, 0, 0, 0.5)" h="100%" p="10px">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
