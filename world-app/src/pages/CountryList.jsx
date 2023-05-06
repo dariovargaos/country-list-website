@@ -1,16 +1,24 @@
 import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+
+//icons
+import { FcGlobe } from "react-icons/fc";
+import { FaCity } from "react-icons/fa";
+import { GiHumanPyramid } from "react-icons/gi";
+
+//chakra components
 import {
   Box,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
-  Text,
   SimpleGrid,
   Image,
   Heading,
-  VStack,
+  List,
+  ListItem,
+  ListIcon,
 } from "@chakra-ui/react";
 
 //components
@@ -56,11 +64,18 @@ export default function CountryList({ countryName }) {
                   </Link>
                 </CardBody>
                 <CardFooter>
-                  <VStack>
-                    <Text>Region: {countryName.region}</Text>
-                    <Text>Capital: {countryName.capital}</Text>
-                    <Text>Population: {countryName.population}</Text>
-                  </VStack>
+                  <List spacing={3}>
+                    <ListItem>
+                      <ListIcon as={FcGlobe} /> Region: {countryName.region}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={FaCity} /> Capital: {countryName.capital}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={GiHumanPyramid} /> Population:
+                      {countryName.population}
+                    </ListItem>
+                  </List>
                 </CardFooter>
               </Card>
             ))
@@ -78,11 +93,18 @@ export default function CountryList({ countryName }) {
                   </Link>
                 </CardBody>
                 <CardFooter>
-                  <VStack color="#333333">
-                    <Text>Region: {country.region}</Text>
-                    <Text>Capital: {country.capital}</Text>
-                    <Text>Population: {country.population}</Text>
-                  </VStack>
+                  <List color="#333333" spacing={3}>
+                    <ListItem>
+                      <ListIcon as={FcGlobe} /> Region: {country.region}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={FaCity} /> Capital: {country.capital}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={GiHumanPyramid} /> Population:{" "}
+                      {country.population}
+                    </ListItem>
+                  </List>
                 </CardFooter>
               </Card>
             ))}

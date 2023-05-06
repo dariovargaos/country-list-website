@@ -6,7 +6,7 @@ export default function Navbar() {
     <Container h={12} w="50%" centerContent>
       <Flex gap={8} color="#333333" p={2}>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/countries">Countries</NavLink>
+        <NavLink to="/countries">Country List</NavLink>
       </Flex>
       <Divider />
     </Container>

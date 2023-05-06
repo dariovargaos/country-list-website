@@ -9,9 +9,19 @@ import {
   Flex,
   CardFooter,
   Image,
-  VStack,
   Heading,
+  List,
+  ListItem,
+  ListIcon,
 } from "@chakra-ui/react";
+
+//icons
+import { FcGlobe } from "react-icons/fc";
+import { FaCity } from "react-icons/fa";
+import { GiHumanPyramid } from "react-icons/gi";
+import { BiTime } from "react-icons/bi";
+import { BsFillCarFrontFill } from "react-icons/bs";
+import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 
 export default function CountryDetails() {
   const { name } = useParams();
@@ -43,15 +53,32 @@ export default function CountryDetails() {
                 />
               </CardBody>
               <CardFooter>
-                <VStack>
-                  <Text>Official name: {country.name.official}</Text>
-                  <Text>Region: {country.region}</Text>
-                  <Text>Subregion: {country.subregion}</Text>
-                  <Text>Capital: {country.capital}</Text>
-                  <Text>Population: {country.population}</Text>
-                  <Text>Timezone: {country.timezones}</Text>
-                  <Text>Driver side: {country.car.side}</Text>
-                </VStack>
+                <List spacing={3}>
+                  <ListItem>
+                    <ListIcon as={MdOutlineDriveFileRenameOutline} /> Official
+                    name: {country.name.official}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={FcGlobe} /> Region: {country.region}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={FcGlobe} /> Subregion: {country.subregion}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={FaCity} /> Capital: {country.capital}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={GiHumanPyramid} /> Population:
+                    {country.population}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={BiTime} /> Timezone: {country.timezones}
+                  </ListItem>
+                  <ListItem>
+                    <ListIcon as={BsFillCarFrontFill} />
+                    Driver side: {country.car.side}
+                  </ListItem>
+                </List>
               </CardFooter>
             </Card>
             <Card border="1px solid #333333">
