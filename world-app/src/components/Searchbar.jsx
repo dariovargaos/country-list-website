@@ -13,7 +13,7 @@ export default function Searchbar() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="search">Search:</label>
+        <label htmlFor="search">Search: </label>
         <input
           type="text"
           id="search"

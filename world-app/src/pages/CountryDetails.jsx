@@ -30,14 +30,14 @@ export default function CountryDetails() {
 
   return (
     <Box p="16px">
-      {isPending && <Text>Loading</Text>}
+      {isPending && <Text color="white">Loading</Text>}
       {data &&
         data.map((country) => (
           <Flex key={country.name.common} gap="200px" justify="center">
             <Card
               key={country.name.common}
               mt="10px"
-              color="#333333"
+              color="white"
               bg="transparent"
               border="1px solid #333333"
               align="center"

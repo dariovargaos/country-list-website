@@ -19,6 +19,7 @@ import {
   List,
   ListItem,
   ListIcon,
+  Text,
 } from "@chakra-ui/react";
 
 //components
@@ -30,7 +31,7 @@ export default function CountryList({ countryName }) {
   );
 
   const imageStyles = {
-    border: "1px solid black",
+    border: "1px solid white",
     htmlHeight: "300px",
     htmlWidth: "200px",
     ":hover": {
@@ -41,14 +42,14 @@ export default function CountryList({ countryName }) {
   const cardStyles = {
     alignItems: "center",
     bg: "transparent",
-    border: "1px solid #333333",
-    color: "#333333",
+    border: "1px solid white",
+    color: "white",
   };
 
   return (
     <Box mt="16px">
-      {isPending && <p>Loading...</p>}
-      <Searchbar />
+      {isPending && <Text color="white">Loading...</Text>}
+      {!isPending && <Searchbar />}
       <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">
         {countryName
           ? countryName.map((countryName) => (
@@ -93,7 +94,7 @@ export default function CountryList({ countryName }) {
                   </Link>
                 </CardBody>
                 <CardFooter>
-                  <List color="#333333" spacing={3}>
+                  <List color="white" spacing={3}>
                     <ListItem>
                       <ListIcon as={FcGlobe} /> Region: {country.region}
                     </ListItem>
