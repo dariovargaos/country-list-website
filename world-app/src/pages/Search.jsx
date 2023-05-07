@@ -17,8 +17,8 @@ export default function Search() {
   return (
     <Box>
       <Heading color="white">Your search for: {query}</Heading>
-      {error && <Text>{error}</Text>}
-      {isPending && <Text>Loading...</Text>}
+      {error && <Text color="white">{error}</Text>}
+      {isPending && <Text color="white">Loading...</Text>}
       {data && <CountryList countryName={data} />}
     </Box>
   );
