@@ -83,7 +83,7 @@ export default function CountryList({ countryName }) {
                   </Heading>
                 </CardHeader>
                 <CardBody>
-                  <Link to={`/countries/${countryName.name.common}`}>
+                  <Link to={`/countrylist/${countryName.name.common}`}>
                     <Image src={countryName.flags.png} sx={imageStyles} />
                   </Link>
                 </CardBody>
@@ -112,7 +112,7 @@ export default function CountryList({ countryName }) {
                   </Heading>
                 </CardHeader>
                 <CardBody>
-                  <Link to={`/countries/${country.name.common}`}>
+                  <Link to={`/countrylist/${country.name.common}`}>
                     <Image src={country.flags.png} sx={imageStyles} />
                   </Link>
                 </CardBody>

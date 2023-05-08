@@ -19,8 +19,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/countries" element={<CountryList />} />
-            <Route path="/countries/:name" element={<CountryDetails />} />
+            <Route path="/countrylist" element={<CountryList />} />
+            <Route path="/countrylist/:name" element={<CountryDetails />} />
             <Route path="/search" element={<Search />} />
           </Routes>
         </Box>

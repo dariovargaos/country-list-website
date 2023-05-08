@@ -7,3 +7,13 @@
 label {
   color: white;
 }
+
+input {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}

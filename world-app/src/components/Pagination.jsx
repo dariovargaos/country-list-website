@@ -14,10 +14,6 @@ export default function Pagination({
     pageNumbers.push(i);
   }
 
-  const activeStyle = {
-    color: "red",
-    textDecoration: "underline",
-  };
   return (
     <Container centerContent>
       <List display="flex" color="white" gap={5}>
