@@ -13,6 +13,7 @@ import {
   List,
   ListItem,
   ListIcon,
+  VStack,
 } from "@chakra-ui/react";
 
 //icons
@@ -33,14 +34,13 @@ export default function CountryDetails() {
       {isPending && <Text color="white">Loading</Text>}
       {data &&
         data.map((country) => (
-          <Flex key={country.name.common} gap="200px" justify="center">
+          <Flex key={country.name.common} gap="200px" align="center">
             <Card
               key={country.name.common}
               mt="10px"
               color="white"
               bg="transparent"
-              border="1px solid #333333"
-              align="center"
+              border="1px solid white"
             >
               <CardHeader>
                 <Heading>{country.name.common}</Heading>
@@ -81,9 +81,21 @@ export default function CountryDetails() {
                 </List>
               </CardFooter>
             </Card>
-            <Card border="1px solid #333333">
+            <Card
+              border="1px solid white"
+              bg="transparent"
+              color="white"
+              h="50%"
+            >
               <CardBody>
                 <Link to={country.maps.googleMaps}>View on Google Maps</Link>
+                <Link to={country.maps.googleMaps}>
+                  <Image
+                    src="https://static.vecteezy.com/system/resources/previews/013/948/543/original/google-maps-logo-on-transparent-white-background-free-vector.jpg"
+                    width="400px"
+                    borderRadius="full"
+                  />
+                </Link>
               </CardBody>
             </Card>
           </Flex>

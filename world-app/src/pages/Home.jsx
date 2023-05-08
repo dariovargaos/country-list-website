@@ -53,7 +53,7 @@ export default function Home() {
       <Divider />
       <Flex color="white" p="8px" gap={4} align="center">
         <Image
-          src="https://m.media-amazon.com/images/I/71gajGNs4SL.jpg"
+          src="https://www.worldatlas.com/r/w768/upload/3d/34/02/country-names.jpg"
           width="400px"
         />
         <Text>
@@ -68,7 +68,7 @@ export default function Home() {
       <Divider />
       <Flex color="white" p="8px" gap={4} align="center">
         <Text>
-          Flags:Originally, flags representing a country would generally be the
+          Flags: Originally, flags representing a country would generally be the
           personal flag of its rulers; however, over time, the practice of using
           personal banners as flags of places was abandoned in favor of flags
           that had some significance to the nation, often its patron saint.
@@ -81,12 +81,16 @@ export default function Home() {
           and particularly are a product of the Age of Revolution.{" "}
         </Text>
         <Image
-          src="https://www.nationsonline.org/gallery/World/World-Flag-map-Nell.jpg"
+          src="https://assets.weforum.org/article/image/BG0pfzM90_bsl3pWCLD2ZvvspIYSUwrhYlc5QyRO96E.jpg"
           width="400px"
         />
       </Flex>
       <Divider />
-      <Flex color="white" p="8px" gap={4}>
+      <Flex color="white" p="8px" gap={4} align="center">
+        <Image
+          src="https://images.news18.com/ibnlive/uploads/2022/11/ap22331659470373.jpg?impolicy=website&width=0&height=0"
+          width="400px"
+        />
         <Text>
           National anthems: A national anthem is a patriotic musical composition
           symbolizing and evoking eulogies of the history and traditions of a

@@ -107,9 +107,9 @@ export default function CountryList({ countryName }) {
             currentCountries.map((country) => (
               <Card key={country.name.common} sx={cardStyles}>
                 <CardHeader>
-                  <Heading size="lg" _hover={{ cursor: "pointer" }}>
-                    {country.name.common}
-                  </Heading>
+                  <Link to={`/countrylist/${country.name.common}`}>
+                    <Heading size="lg">{country.name.common}</Heading>
+                  </Link>
                 </CardHeader>
                 <CardBody>
                   <Link to={`/countrylist/${country.name.common}`}>
