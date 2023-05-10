@@ -21,11 +21,13 @@ import {
   ListItem,
   ListIcon,
   Text,
+  Flex,
 } from "@chakra-ui/react";
 
 //components
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
+import Filter from "../components/Filter";
 
 export default function CountryList({ countryName }) {
   const { data, isPending, error } = useFetch(
@@ -34,14 +36,31 @@ export default function CountryList({ countryName }) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(20);
+  const [selectedRegion, setSelectedRegion] = useState("all");
+
+  const handleChangeSelect = (e) => {
+    setSelectedRegion(e.target.value);
+    setCurrentPage(1);
+  };
+
+  console.log(selectedRegion);
 
   // get current countries
   if (data) {
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    var currentCountries = data.slice(indexOfFirstCountry, indexOfLastCountry);
+    var filteredData =
+      selectedRegion === "all"
+        ? data
+        : data.filter(
+            (country) => country.region.toLowerCase() === selectedRegion
+          );
+    var currentCountries = filteredData.slice(
+      indexOfFirstCountry,
+      indexOfLastCountry
+    );
 
-    var totalCountries = data.length;
+    var totalCountries = filteredData.length;
   }
 
   //change page
@@ -72,61 +91,78 @@ export default function CountryList({ countryName }) {
     <Box mt="16px">
       {isPending && <Text color="white">Loading...</Text>}
       {error && <Text color="white">{error}</Text>}
-      {!isPending && <Searchbar />}
+      <Flex justify="center" gap={8}>
+        {!isPending && <Searchbar />}
+        {!isPending && (
+          <label>
+            <span>Filter by region:</span>
+            <select onChange={handleChangeSelect}>
+              <option value="all">All</option>
+              <option value="africa">Africa</option>
+              <option value="americas">Americas</option>
+              <option value="antarctic">Antarctic</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="oceania">Oceania</option>
+            </select>
+          </label>
+        )}
+      </Flex>
+
       <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">
         {countryName
-          ? countryName.map((countryName) => (
-              <Card key={countryName.name.common} sx={cardStyles}>
+          ? countryName?.map((countryName) => (
+              <Card key={countryName?.name?.common} sx={cardStyles}>
                 <CardHeader>
                   <Heading size="lg" _hover={{ cursor: "pointer" }}>
-                    {countryName.name.common}
+                    {countryName?.name?.common}
                   </Heading>
                 </CardHeader>
                 <CardBody>
-                  <Link to={`/countrylist/${countryName.name.common}`}>
-                    <Image src={countryName.flags.png} sx={imageStyles} />
+                  <Link to={`/countrylist/${countryName?.name?.common}`}>
+                    <Image src={countryName?.flags?.png} sx={imageStyles} />
                   </Link>
                 </CardBody>
                 <CardFooter>
                   <List spacing={3}>
                     <ListItem>
-                      <ListIcon as={FcGlobe} /> Region: {countryName.region}
+                      <ListIcon as={FcGlobe} /> Region: {countryName?.region}
                     </ListItem>
                     <ListItem>
-                      <ListIcon as={FaCity} /> Capital: {countryName.capital}
+                      <ListIcon as={FaCity} /> Capital: {countryName?.capital}
                     </ListItem>
                     <ListItem>
                       <ListIcon as={GiHumanPyramid} /> Population:
-                      {countryName.population}
+                      {countryName?.population}
                     </ListItem>
                   </List>
                 </CardFooter>
               </Card>
             ))
           : data &&
-            currentCountries.map((country) => (
-              <Card key={country.name.common} sx={cardStyles}>
+            currentCountries?.map((country) => (
+              <Card key={country?.name?.common} sx={cardStyles}>
                 <CardHeader>
-                  <Link to={`/countrylist/${country.name.common}`}>
-                    <Heading size="lg">{country.name.common}</Heading>
+                  <Link to={`/countrylist/${country?.name?.common}`}>
+                    <Heading size="lg">{country?.name?.common}</Heading>
                   </Link>
                 </CardHeader>
                 <CardBody>
-                  <Link to={`/countrylist/${country.name.common}`}>
-                    <Image src={country.flags.png} sx={imageStyles} />
+                  <Link to={`/countrylist/${country?.name?.common}`}>
+                    <Image src={country?.flags?.png} sx={imageStyles} />
                   </Link>
                 </CardBody>
                 <CardFooter>
                   <List color="white" spacing={3}>
                     <ListItem>
-                      <ListIcon as={FcGlobe} /> Region: {country.region}
+                      <ListIcon as={FcGlobe} /> Region: {country?.region}
                     </ListItem>
                     <ListItem>
-                      <ListIcon as={FaCity} /> Capital: {country.capital}
+                      <ListIcon as={FaCity} /> Capital: {country?.capital}
                     </ListItem>
                     <ListItem>
                       <ListIcon as={GiHumanPyramid} /> Population:{" "}
-                      {country.population}
+                      {country?.population}
                     </ListItem>
                   </List>
                 </CardFooter>
