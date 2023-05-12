@@ -23,18 +23,14 @@ export default function Home() {
           Pitcairn Islands are the least populous.
         </Text>
         <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/f/f7/World_Map_%28political%29.svg"
+          src="/img/ourworld.jpg"
           fallback="Picture of all countries."
           width="400px"
         />
       </Flex>
       <Divider />
       <Flex sx={flexStyles}>
-        <Image
-          src="https://cdn.etymonline.com/chart/etymology-country-19172p_l.jpg?t=1634113917000"
-          width="400px"
-          height="400px"
-        />
+        <Image src="/img/etymology.jpg" width="400px" height="400px" />
         <Text>
           <b>Etymology:</b> The word country comes from Old French contrée,
           which derives from Vulgar Latin (terra) contrata ("(land) lying
@@ -51,17 +47,11 @@ export default function Home() {
           includes. Many categories of symbols can be seen in flags, coats of
           arms, or seals.
         </Text>
-        <Image
-          src="https://www.mappr.co/wp-content/uploads/2021/08/image-28.jpeg"
-          width="400px"
-        />
+        <Image src="/img/symbols.jpeg" width="400px" />
       </Flex>
       <Divider />
       <Flex sx={flexStyles}>
-        <Image
-          src="https://www.worldatlas.com/r/w768/upload/3d/34/02/country-names.jpg"
-          width="400px"
-        />
+        <Image src="/img/country-names.webp" width="400px" />
         <Text>
           <b>Name:</b> Most countries have a long name and a short name. The
           long name is typically used in formal contexts and often describes the
@@ -84,17 +74,11 @@ export default function Home() {
           flags outside of military or naval context begins only with the rise
           of the idea of the nation state at the end of the 18th century.
         </Text>
-        <Image
-          src="https://assets.weforum.org/article/image/BG0pfzM90_bsl3pWCLD2ZvvspIYSUwrhYlc5QyRO96E.jpg"
-          width="400px"
-        />
+        <Image src="/img/flags.jpg" width="400px" />
       </Flex>
       <Divider />
       <Flex sx={flexStyles}>
-        <Image
-          src="https://images.news18.com/ibnlive/uploads/2022/11/ap22331659470373.jpg?impolicy=website&width=0&height=0"
-          width="400px"
-        />
+        <Image src="/img/anthem.jpg" width="400px" />
         <Text>
           <b>National anthems:</b> A national anthem is a patriotic musical
           composition symbolizing and evoking eulogies of the history and

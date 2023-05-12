@@ -27,7 +27,7 @@ import {
 //components
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
-import Filter from "../components/Filter";
+import SearchbarTwo from "../components/SearchbarTwo";
 
 export default function CountryList({ countryName }) {
   const { data, isPending, error } = useFetch(
@@ -42,8 +42,6 @@ export default function CountryList({ countryName }) {
     setSelectedRegion(e.target.value);
     setCurrentPage(1);
   };
-
-  console.log(selectedRegion);
 
   // get current countries
   if (data) {
@@ -93,6 +91,7 @@ export default function CountryList({ countryName }) {
       {error && <Text color="white">{error}</Text>}
       <Flex justify="center" gap={8}>
         {!isPending && <Searchbar />}
+        {/* {!isPending && <SearchbarTwo data={data} />} */}
         {!isPending && (
           <label>
             <span>Filter by region:</span>

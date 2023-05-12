@@ -1,6 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
@@ -32,7 +31,23 @@ export default function CountryDetails() {
   const { name } = useParams();
   const url = `https://restcountries.com/v3.1/name/${name}`;
   const { data, isPending, error } = useFetch(url);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleGoBack = () => {
+    if (location.state && location.state.from) {
+      navigate(location.state.from);
+    } else {
+      navigate(-1);
+    }
+  };
+
+  const cardStyles = {
+    color: "white",
+    backgroundColor: "transparent",
+    height: "100%",
+    width: "100%",
+  };
 
   return (
     <Box p="16px">
@@ -40,48 +55,54 @@ export default function CountryDetails() {
       {error && <Text color="white">{error}</Text>}
       {data &&
         data?.map((country) => (
-          <Flex key={country?.name?.common} gap="200px" align="center">
-            {country.name.common && country.flags.png ? (
-              <Card
-                key={country?.name?.common}
-                color="white"
-                bg="transparent"
-                h="100%"
-                width="100%"
-              >
+          <Flex key={country?.name?.common} gap="20px" align="center" mt="50px">
+            <Card key={country?.name?.common} sx={cardStyles}>
+              <CardHeader>
+                <Heading fontWeight="500">{country?.name?.common}</Heading>
+              </CardHeader>
+              <CardBody>
+                <Image
+                  src={country?.flags?.png}
+                  alt={country?.flags?.alt}
+                  border="1px solid white"
+                  width="100%"
+                />
+              </CardBody>
+              <CardFooter>
+                <Button
+                  onClick={handleGoBack}
+                  leftIcon={<AiOutlineArrowLeft />}
+                  variant="outline"
+                  size="sm"
+                  bg="transparent"
+                  _hover={{ backgroundColor: "gray.700" }}
+                >
+                  Go back
+                </Button>
+              </CardFooter>
+            </Card>
+            {country.coatOfArms.svg ? (
+              <Card sx={cardStyles}>
                 <CardHeader>
-                  <Heading>{country?.name?.common}</Heading>
+                  <Heading fontWeight="500">Coat of arms</Heading>
                 </CardHeader>
                 <CardBody>
                   <Image
-                    src={country?.flags?.png}
-                    alt={country?.flags?.alt}
+                    src={country?.coatOfArms?.svg}
+                    alt="National army symbol."
                     border="1px solid white"
                     width="100%"
                   />
                 </CardBody>
-                <CardFooter>
-                  <Button
-                    onClick={() => navigate(-1)}
-                    leftIcon={<AiOutlineArrowLeft />}
-                    variant="outline"
-                    size="sm"
-                    bg="transparent"
-                    _hover={{ backgroundColor: "gray.700" }}
-                  >
-                    Go back
-                  </Button>
-                </CardFooter>
               </Card>
             ) : (
-              <Text>No data for this country.</Text>
+              <Card sx={cardStyles}>
+                <CardHeader>
+                  <Text>No available army symbol.</Text>
+                </CardHeader>
+              </Card>
             )}
-            <Card
-              border="1px solid white"
-              bg="transparent"
-              color="white"
-              width="100%"
-            >
+            <Card border="1px solid white" sx={cardStyles}>
               <CardBody>
                 <List spacing={3}>
                   {country.name.official ? (
