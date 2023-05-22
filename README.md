@@ -9,4 +9,4 @@
 * Website is online here: https://whatiscountry.netlify.app/
 
 * *Website is made for desktop first. Currently in the process for adjusting it for smaller devices.
-* **Currently the API used for website is down, trying to change website on another API
+* ** **Currently the API used for website is down, trying to change website on another API**
