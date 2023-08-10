@@ -1,16 +1,25 @@
-import { Container, Flex, Divider, textDecoration } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
+import { Flex, Link } from "@chakra-ui/react";
 
 export default function Navbar() {
   return (
-    <Container h={12} w="50%" centerContent>
-      <Flex gap={8} color="white" p={2}>
-        <NavLink to="/" _hover={{ textDecoration: "underline" }}>
-          Home
-        </NavLink>
-        <NavLink to="/countrylist">Country List</NavLink>
-      </Flex>
-      <Divider />
-    </Container>
+    <Flex gap={8} color="white" p={2} borderBottom="1px solid gray">
+      <Link
+        as={RouterNavLink}
+        to="/"
+        _hover={{ textDecoration: "underline" }}
+        _activeLink={{ textDecoration: "underline" }}
+      >
+        Home
+      </Link>
+      <Link
+        as={RouterNavLink}
+        to="/countrylist"
+        _hover={{ textDecoration: "underline" }}
+        _activeLink={{ textDecoration: "underline" }}
+      >
+        Country List
+      </Link>
+    </Flex>
   );
 }

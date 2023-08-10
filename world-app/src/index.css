@@ -19,12 +19,3 @@ select option {
   background-color: #f6f6f6;
   color: black;
 }
-
-
-a:hover {
-  text-decoration: underline;
-}
-
-a.active{
-  text-decoration: underline;
-}
