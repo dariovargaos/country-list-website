@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 
 //components
 import Home from "./pages/Home";
@@ -8,14 +8,24 @@ import CountryDetails from "./pages/CountryDetails";
 import Navbar from "./components/Navbar";
 import Search from "./pages/Search";
 
-//styles
-import "./App.css";
+const backgroundImageStyles = {
+  backgroundImage: `url("/img/bg.jpg")`,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundAttachment: "fixed",
+};
 
 function App() {
   return (
-    <Box className="App" align="center">
+    <VStack sx={backgroundImageStyles}>
       <BrowserRouter>
-        <Box maxW="860px" minHeight="100vh" p="10px">
+        <VStack
+          w={{ base: "90%", sm: "90%", md: "90%", lg: "70%" }}
+          minHeight="100vh"
+          p="10px"
+          spacing={6}
+        >
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,9 +33,9 @@ function App() {
             <Route path="/countrylist/:name" element={<CountryDetails />} />
             <Route path="/search" element={<Search />} />
           </Routes>
-        </Box>
+        </VStack>
       </BrowserRouter>
-    </Box>
+    </VStack>
   );
 }
 
