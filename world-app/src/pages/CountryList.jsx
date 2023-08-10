@@ -22,6 +22,7 @@ import {
   ListIcon,
   Text,
   Flex,
+  Select,
 } from "@chakra-ui/react";
 
 //components
@@ -86,14 +87,35 @@ export default function CountryList({ countryName }) {
   };
 
   return (
-    <Box mt="16px">
+    <Box>
       {isPending && <Text color="white">Loading...</Text>}
       {error && <Text color="white">{error}</Text>}
-      <Flex justify="center" gap={8}>
+      <Flex
+        justify="center"
+        align="center"
+        gap={4}
+        flexDir={{ base: "column", sm: "column", md: "row", lg: "row" }}
+      >
         {!isPending && <Searchbar />}
-        {/* {!isPending && <SearchbarTwo data={data} />} */}
-        {!isPending && (
-          <label>
+        {
+          !isPending && (
+            <Select
+              onChange={handleChangeSelect}
+              color="white"
+              size="sm"
+              w={{ base: "70%", sm: "40%", md: "40%", lg: "40%", xl: "30%" }}
+            >
+              <option value="all">All</option>
+              <option value="africa">Africa</option>
+              <option value="americas">Americas</option>
+              <option value="antarctic">Antarctic</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="oceania">Oceania</option>
+            </Select>
+          )
+
+          /* <label>
             <span>Filter by region:</span>
             <select onChange={handleChangeSelect}>
               <option value="all">All</option>
@@ -104,8 +126,8 @@ export default function CountryList({ countryName }) {
               <option value="europe">Europe</option>
               <option value="oceania">Oceania</option>
             </select>
-          </label>
-        )}
+          </label> */
+        }
       </Flex>
 
       <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">

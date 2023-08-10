@@ -20,11 +20,13 @@ function App() {
   return (
     <VStack sx={backgroundImageStyles}>
       <BrowserRouter>
-        <VStack
+        <Box
           w={{ base: "90%", sm: "90%", md: "90%", lg: "70%" }}
           minHeight="100vh"
           p="10px"
-          spacing={6}
+          display="flex"
+          flexDir="column"
+          gap={8}
         >
           <Navbar />
           <Routes>
@@ -33,7 +35,7 @@ function App() {
             <Route path="/countrylist/:name" element={<CountryDetails />} />
             <Route path="/search" element={<Search />} />
           </Routes>
-        </VStack>
+        </Box>
       </BrowserRouter>
     </VStack>
   );

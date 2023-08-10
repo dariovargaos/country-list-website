@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 export default function Searchbar() {
   const [term, setTerm] = useState("");
@@ -11,16 +12,18 @@ export default function Searchbar() {
     navigate(`/search?countryName=${term}`);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="search">Search: </label>
-        <input
+    <form onSubmit={handleSubmit}>
+      <FormControl display="flex" alignItems="center">
+        <FormLabel color="white">Search:</FormLabel>
+        <Input
           type="text"
           id="search"
+          color="white"
+          size="sm"
           onChange={(e) => setTerm(e.target.value)}
-          required
+          isRequired
         />
-      </form>
-    </div>
+      </FormControl>
+    </form>
   );
 }
