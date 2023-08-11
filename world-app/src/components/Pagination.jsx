@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
 
 //chakra components
-import { Container, List, ListItem } from "@chakra-ui/react";
+import { Container, List, ListItem, Link } from "@chakra-ui/react";
 
 export default function Pagination({
   countriesPerPage,
@@ -33,9 +33,13 @@ export default function Pagination({
               color: "white",
             }}
           >
-            <NavLink to="#" onClick={() => paginate(pageNumber)}>
+            <Link
+              as={RouterNavLink}
+              to="#"
+              onClick={() => paginate(pageNumber)}
+            >
               {pageNumber}
-            </NavLink>
+            </Link>
           </ListItem>
         ))}
       </List>

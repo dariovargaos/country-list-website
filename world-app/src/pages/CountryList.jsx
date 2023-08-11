@@ -86,31 +86,49 @@ export default function CountryList({ countryName }) {
     color: "white",
   };
 
+  const selectStyles = {
+    color: "white",
+    bg: "transparent",
+  };
+
   return (
     <Box>
       {isPending && <Text color="white">Loading...</Text>}
       {error && <Text color="white">{error}</Text>}
       <Flex
-        justify="center"
-        align="center"
         gap={4}
+        justify="center"
         flexDir={{ base: "column", sm: "column", md: "row", lg: "row" }}
       >
         {!isPending && <Searchbar />}
         {!isPending && (
           <Select
             onChange={handleChangeSelect}
-            color="white"
             size="sm"
             w={{ base: "70%", sm: "60%", md: "40%", lg: "40%", xl: "30%" }}
+            sx={selectStyles}
           >
-            <option value="all">All</option>
-            <option value="africa">Africa</option>
-            <option value="americas">Americas</option>
-            <option value="antarctic">Antarctic</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="oceania">Oceania</option>
+            <option value="all" style={{ color: "black" }}>
+              All
+            </option>
+            <option value="africa" style={{ color: "black" }}>
+              Africa
+            </option>
+            <option value="americas" style={{ color: "black" }}>
+              Americas
+            </option>
+            <option value="antarctic" style={{ color: "black" }}>
+              Antarctic
+            </option>
+            <option value="asia" style={{ color: "black" }}>
+              Asia
+            </option>
+            <option value="europe" style={{ color: "black" }}>
+              Europe
+            </option>
+            <option value="oceania" style={{ color: "black" }}>
+              Oceania
+            </option>
           </Select>
         )}
       </Flex>

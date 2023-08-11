@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 export default function Searchbar() {
   const [term, setTerm] = useState("");
@@ -13,7 +13,11 @@ export default function Searchbar() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <FormControl display="flex" alignItems="center">
+      <FormControl
+        display="flex"
+        alignItems="center"
+        w={{ base: "80%", sm: "60%", md: "90%", lg: "100%" }}
+      >
         <FormLabel color="white">Search:</FormLabel>
         <Input
           type="text"
