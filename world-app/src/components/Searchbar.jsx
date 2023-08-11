@@ -16,7 +16,7 @@ export default function Searchbar() {
       <FormControl
         display="flex"
         alignItems="center"
-        w={{ base: "80%", sm: "60%", md: "90%", lg: "100%" }}
+        w={{ base: "80%", sm: "90%", md: "90%", lg: "100%" }}
       >
         <FormLabel color="white">Search:</FormLabel>
         <Input

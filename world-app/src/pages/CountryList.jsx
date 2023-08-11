@@ -98,14 +98,14 @@ export default function CountryList({ countryName }) {
       <Flex
         gap={4}
         justify="center"
-        flexDir={{ base: "column", sm: "column", md: "row", lg: "row" }}
+        flexDir={{ base: "column", sm: "row", md: "row", lg: "row" }}
       >
         {!isPending && <Searchbar />}
         {!isPending && (
           <Select
             onChange={handleChangeSelect}
             size="sm"
-            w={{ base: "70%", sm: "60%", md: "40%", lg: "40%", xl: "30%" }}
+            w={{ base: "70%", sm: "30%", md: "40%", lg: "40%", xl: "30%" }}
             sx={selectStyles}
           >
             <option value="all" style={{ color: "black" }}>
@@ -138,7 +138,10 @@ export default function CountryList({ countryName }) {
           ? countryName?.map((countryName) => (
               <Card key={countryName?.name?.common} sx={cardStyles}>
                 <CardHeader>
-                  <Heading size="lg" _hover={{ cursor: "pointer" }}>
+                  <Heading
+                    size="lg"
+                    _hover={{ cursor: "pointer", textDecoration: "underline" }}
+                  >
                     {countryName?.name?.common}
                   </Heading>
                 </CardHeader>

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import { Heading, Box, Text } from "@chakra-ui/react";
+import { Heading, Box, Text, Flex, Container } from "@chakra-ui/react";
 
 //components
 import CountryList from "./CountryList";
@@ -16,9 +16,14 @@ export default function Search() {
 
   return (
     <Box>
-      <Heading color="white">Your search for: {query}</Heading>
       {error && <Text color="white">{error}</Text>}
       {isPending && <Text color="white">Loading...</Text>}
+      <Flex justify="center">
+        <Heading size={{ base: "sm", sm: "lg", md: "xl" }} color="white">
+          Your search for: {query}
+        </Heading>
+      </Flex>
+
       {data && <CountryList countryName={data} />}
     </Box>
   );
