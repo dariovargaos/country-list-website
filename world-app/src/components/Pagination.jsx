@@ -16,7 +16,12 @@ export default function Pagination({
 
   return (
     <Container centerContent>
-      <List display="flex" color="white" gap={5}>
+      <List
+        display="flex"
+        color="white"
+        gap={4}
+        flexWrap={{ base: "wrap", sm: "wrap" }}
+      >
         {pageNumbers.map((pageNumber) => (
           <ListItem
             key={pageNumber}

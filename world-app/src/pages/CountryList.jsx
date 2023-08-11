@@ -97,40 +97,25 @@ export default function CountryList({ countryName }) {
         flexDir={{ base: "column", sm: "column", md: "row", lg: "row" }}
       >
         {!isPending && <Searchbar />}
-        {
-          !isPending && (
-            <Select
-              onChange={handleChangeSelect}
-              color="white"
-              size="sm"
-              w={{ base: "70%", sm: "40%", md: "40%", lg: "40%", xl: "30%" }}
-            >
-              <option value="all">All</option>
-              <option value="africa">Africa</option>
-              <option value="americas">Americas</option>
-              <option value="antarctic">Antarctic</option>
-              <option value="asia">Asia</option>
-              <option value="europe">Europe</option>
-              <option value="oceania">Oceania</option>
-            </Select>
-          )
-
-          /* <label>
-            <span>Filter by region:</span>
-            <select onChange={handleChangeSelect}>
-              <option value="all">All</option>
-              <option value="africa">Africa</option>
-              <option value="americas">Americas</option>
-              <option value="antarctic">Antarctic</option>
-              <option value="asia">Asia</option>
-              <option value="europe">Europe</option>
-              <option value="oceania">Oceania</option>
-            </select>
-          </label> */
-        }
+        {!isPending && (
+          <Select
+            onChange={handleChangeSelect}
+            color="white"
+            size="sm"
+            w={{ base: "70%", sm: "60%", md: "40%", lg: "40%", xl: "30%" }}
+          >
+            <option value="all">All</option>
+            <option value="africa">Africa</option>
+            <option value="americas">Americas</option>
+            <option value="antarctic">Antarctic</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+          </Select>
+        )}
       </Flex>
 
-      <SimpleGrid minChildWidth="300px" spacing="40px" p="10px">
+      <SimpleGrid minChildWidth="250px" spacing="20px" p="10px">
         {countryName
           ? countryName?.map((countryName) => (
               <Card key={countryName?.name?.common} sx={cardStyles}>

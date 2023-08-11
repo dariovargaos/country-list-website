@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box, VStack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 //components
 import Home from "./pages/Home";
@@ -18,16 +18,13 @@ const backgroundImageStyles = {
 
 function App() {
   return (
-    <VStack sx={backgroundImageStyles}>
-      <BrowserRouter>
-        <Box
-          w={{ base: "90%", sm: "90%", md: "90%", lg: "70%" }}
-          minHeight="100vh"
-          p="10px"
-          display="flex"
-          flexDir="column"
-          gap={8}
-        >
+    <Flex sx={backgroundImageStyles} justifyContent="center" minH="100vh">
+      <Flex
+        w={{ base: "90%", sm: "90%", md: "90%", lg: "70%" }}
+        flexDir="column"
+        gap={8}
+      >
+        <BrowserRouter>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -35,9 +32,9 @@ function App() {
             <Route path="/countrylist/:name" element={<CountryDetails />} />
             <Route path="/search" element={<Search />} />
           </Routes>
-        </Box>
-      </BrowserRouter>
-    </VStack>
+        </BrowserRouter>
+      </Flex>
+    </Flex>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
+import { useParams, Link as RouterLink, useNavigate } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import {
   Box,
@@ -7,13 +7,13 @@ import {
   CardHeader,
   Text,
   Flex,
-  CardFooter,
   Image,
   Heading,
   List,
   ListItem,
   ListIcon,
   Button,
+  Link,
 } from "@chakra-ui/react";
 
 //icons
@@ -32,14 +32,9 @@ export default function CountryDetails() {
   const url = `https://restcountries.com/v3.1/name/${name}`;
   const { data, isPending, error } = useFetch(url);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleGoBack = () => {
-    if (location.state && location.state.from) {
-      navigate(location.state.from);
-    } else {
-      navigate(-1);
-    }
+    navigate(-1);
   };
 
   const cardStyles = {
@@ -50,58 +45,57 @@ export default function CountryDetails() {
   };
 
   return (
-    <Box p="16px">
+    <Box p="10px">
       {isPending && <Text color="white">Loading...</Text>}
       {error && <Text color="white">{error}</Text>}
       {data &&
         data?.map((country) => (
-          <Flex key={country?.name?.common} gap="20px" align="center" mt="50px">
-            <Card key={country?.name?.common} sx={cardStyles}>
-              <CardHeader>
-                <Heading fontWeight="500">{country?.name?.common}</Heading>
-              </CardHeader>
-              <CardBody>
-                <Image
-                  src={country?.flags?.png}
-                  alt={country?.flags?.alt}
-                  border="1px solid white"
-                  width="100%"
-                />
-              </CardBody>
-              <CardFooter>
-                <Button
-                  onClick={handleGoBack}
-                  leftIcon={<AiOutlineArrowLeft />}
-                  variant="outline"
-                  size="sm"
-                  bg="transparent"
-                  _hover={{ backgroundColor: "gray.700" }}
-                >
-                  Go back
-                </Button>
-              </CardFooter>
-            </Card>
-            {country.coatOfArms.svg ? (
-              <Card sx={cardStyles}>
+          <Flex
+            key={country?.name?.common}
+            align="center"
+            flexDir="column"
+            justify="center"
+            gap={6}
+          >
+            <Flex
+              flexDir={{ base: "column", sm: "column", md: "row", lg: "row" }}
+            >
+              <Card key={country?.name?.common} sx={cardStyles}>
                 <CardHeader>
-                  <Heading fontWeight="500">Coat of arms</Heading>
+                  <Heading fontWeight="500">{country?.name?.common}</Heading>
                 </CardHeader>
                 <CardBody>
                   <Image
-                    src={country?.coatOfArms?.svg}
-                    alt="National army symbol."
+                    src={country?.flags?.png}
+                    alt={country?.flags?.alt}
                     border="1px solid white"
-                    width="100%"
+                    width={{ base: "70%", sm: "70%", md: "80%", lg: "80%" }}
                   />
                 </CardBody>
               </Card>
-            ) : (
-              <Card sx={cardStyles}>
-                <CardHeader>
-                  <Text>No available army symbol.</Text>
-                </CardHeader>
-              </Card>
-            )}
+              {country.coatOfArms.svg ? (
+                <Card sx={cardStyles}>
+                  <CardHeader>
+                    <Heading fontWeight="500">Coat of arms</Heading>
+                  </CardHeader>
+                  <CardBody>
+                    <Image
+                      src={country?.coatOfArms?.svg}
+                      alt="National army symbol."
+                      border="1px solid white"
+                      width={{ base: "70%", sm: "70%", md: "100%", lg: "80%" }}
+                    />
+                  </CardBody>
+                </Card>
+              ) : (
+                <Card sx={cardStyles} border="1px solid white">
+                  <CardHeader>
+                    <Text>No available army symbol.</Text>
+                  </CardHeader>
+                </Card>
+              )}
+            </Flex>
+
             <Card border="1px solid white" sx={cardStyles}>
               <CardBody>
                 <List spacing={3}>
@@ -198,7 +192,7 @@ export default function CountryDetails() {
                   {country.maps.googleMaps ? (
                     <ListItem>
                       <ListIcon as={BiMap} />
-                      <Link to={country?.maps?.googleMaps}>
+                      <Link as={RouterLink} to={country?.maps?.googleMaps}>
                         View on Google Maps
                       </Link>
                     </ListItem>
@@ -221,6 +215,17 @@ export default function CountryDetails() {
                 </List>
               </CardBody>
             </Card>
+            <Button
+              onClick={handleGoBack}
+              leftIcon={<AiOutlineArrowLeft />}
+              variant="outline"
+              size="sm"
+              bg="transparent"
+              color="white"
+              _hover={{ backgroundColor: "gray.700" }}
+            >
+              Go back
+            </Button>
           </Flex>
         ))}
     </Box>
